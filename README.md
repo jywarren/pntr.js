@@ -17,15 +17,15 @@ Put your code in index.html at the bottom, in the $P.draw() function, like:
     	}
     })
 
-For a full guide on Canvas drawing commands, see 
+For a full guide on Canvas drawing commands, see https://developer.mozilla.org/en-US/docs/Canvas_tutorial
 
-But where in their examples, you'd use: ctx.canvas.fillRect(0,0,10,10)
+And more specifically for drawing: https://developer.mozilla.org/en-US/docs/Canvas_tutorial/Drawing_shapes
 
-You can just say: $C.fillRect(0,0,10,10)
+But where in their examples, you'd use: ctx.fillRect(0,0,10,10), you just say: $C.fillRect(0,0,10,10)
 
 ###Troubleshooting###
 
-File issues here and I'll help answer questions: 
+File issues here and I'll help answer questions: https://github.com/jywarren/pntr.js/issues
 
 Fork and improve the code, I'm happy to take pull requests!
 

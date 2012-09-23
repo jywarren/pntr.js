@@ -7,6 +7,8 @@ This was written pretty quickly and messily. It's not done. But it can do basic 
 
 ###Getting started###
 
+I may start putting more useful information in the wiki: https://github.com/jywarren/pntr.js/wiki
+
 Put your code in index.html at the bottom, in the $P.draw() function, like: 
 
     $P.initialize({

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>pntr.js</title>
+        <link rel="stylesheet" href="stylesheets/jquery.mobile-1.1.0.min.css" />
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/todataurl.js"></script>
+        <script>
+          $(document).bind("mobileinit", function(){
+            // disable ajax nav
+            $.mobile.ajaxEnabled = false;
+          });
+        </script>
+        <script src="lib/jquery.mobile-1.1.0.min.js"></script>
+    </head>
+    <body>
+
+	<div data-role="page" id="draw-page">
+		<div data-theme="d" data-role="header">
+			<h3>pntr.js</h3>
+		</div>
+		<div data-role="content" style="padding: 15px; text-align:center;">
+			<canvas id="canvas"></canvas>
+			<a data-ajax="false" data-role="button" data-theme="b" id="run">Run<a/>
+		</div>
+	</div>
+
+	<div data-role="page" id="console-page">
+		<div data-theme="d" data-role="header">
+			<h3>pntr.js</h3>
+		</div>
+		<div data-role="content" style="padding: 15px; text-align:center;">
+			<p id="console"></p>
+		</div>
+	</div>
+
+	<script src="pntr.js"></script>
+
+	<script> 
+	(function () { 
+
+		$P.initialize({
+			// pass in options here
+			draw: function() {
+				$C.fillRect(0,0,100,100)
+				$C.fillStyle = "red"
+				$C.fillRect(0,100,100,100)
+				
+			}
+		})
+
+		$('#run').live('tap',function(){ $P.run() })
+
+	})() </script>
+    </body>
+</html>

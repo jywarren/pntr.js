@@ -1,9 +1,9 @@
 pntr.js
 =======
 
-A simple touch-enable Processing-like Canvas environment
+A simple touch-enabled Processing-like Canvas environment
 
-This was written pretty quickly and messily. It's not done. But it can do basic stuff, so have fun.
+This was written pretty quickly and messily. It's not done. But it can do basic stuff, so have fun. If you add examples please submit them as pull requests.
 
 ###Getting started###
 

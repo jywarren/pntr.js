@@ -1,5 +1,9 @@
-$.ajaxSetup ({ cache: false }); 
-//var ajax_load = "<img src='/images/spinner-small.gif' alt='loading...' />";
+/*
+ * pntr.js - A simple touch-enabled Processing-like Canvas environment
+ * 
+ * Source code and docs: https://github.com/jywarren/pntr.js
+ * 
+ */
 
 $P = {
 	pointer_x: 0, // these are kept updated by pntr.js

@@ -17,7 +17,7 @@ $P = {
 	initialize: function(args) {
 		$P.framerate = args['framerate'] || 20
 		$P.draw = args['draw'] || $P.draw
-		$P.setup = args['draw'] || $P.setup
+		$P.setup = args['setup'] || $P.setup
 		$P.element = $('#canvas')
 		$P.element = $('#canvas')[0]
 		$P.canvas = $P.element.getContext('2d');

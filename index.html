@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="stylesheets/style.css" />
         <link rel="stylesheet" href="stylesheets/jquery.mobile-1.1.0.min.css" />
         <script src="lib/jquery.min.js"></script>
+        <script src="lib/canvastext.js"></script>
         <script src="lib/todataurl.js"></script>
         <script>
           $(document).bind("mobileinit", function(){
@@ -38,6 +39,7 @@
 	</div>
 
 	<script src="pntr.js"></script>
+        <script src="lib/canvas.js"></script>
 
 	<script> 
 	(function () { 
@@ -45,15 +47,19 @@
 		$P.initialize({
 			// pass in options here
 			draw: function() {
-				$C.fillStyle = "#000"
-				$C.fillRect(0,0,100,100)
-				$C.fillStyle = "red"
-				$C.fillRect(100,100,50,50)
+				fillStyle("#000")
+				rect(0,0,100,100)
+				fillStyle("red")
+				rect(100,100,50,50)
 				
 			}
 		})
 
-		$('#run').live('tap',function(){ $P.run() })
+		$('#run').live('tap',function(){
+			strokeStyle("blue")
+			lineWidth(4)
+			strokeCirc(200,200,50,50)
+		})
 
 	})() </script>
     </body>

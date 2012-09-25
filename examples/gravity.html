@@ -44,21 +44,31 @@
 	(function () { 
 
 		$P.initialize({
-			x: 0,
-			y: 0,
 			setup: function() {
+				$P.x = 0
+				$P.y = 0
+				$P.velocity = 1 
 				fillStyle("red")
 			},
 			// pass in options here
 			draw: function() {
 				clear()
-				rect($P.x,$P.y,50,50)
+				// draw the rectangle
+				rect($P.x,$P.y,50,50) 
+				// write the y position on it
+				drawText("georgia",14,$P.x,$P.y+25,parseInt($P.y),"white") 
+				// if it hasn't hit the bottom:
+				if ($P.y <= $P.height-$P.velocity-50) {
+					$P.velocity *= 2 // acceleration
+					$P.y += $P.velocity // move it
+				} else $P.y = $P.height-50 // stick it to the bottom of the canvas
 			}
 		})
 
 		$P.on_drag = function() {
 			$P.x = $P.pointer_x - 25
 			$P.y = $P.pointer_y - 25
+			$P.velocity = 1 // reset velocity
 		}
 
 	})() </script>

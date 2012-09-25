@@ -2,16 +2,18 @@ $.ajaxSetup ({ cache: false });
 //var ajax_load = "<img src='/images/spinner-small.gif' alt='loading...' />";
 
 $P = {
-	pointer_x: 0,
+	pointer_x: 0, // these are kept updated by pntr.js
 	pointer_y: 0,
 	v_offset: 60, // height of the canvas below top of page, used only for touch events
+	longpress_time: 1500, // milliseconds to trigger a "long pres" event
 
 	/**
 	 * Startup environment, accepts data_url or just URL of starting image
 	**/
 	initialize: function(args) {
-		$P.framerate = args['framerate'] || 10
+		$P.framerate = args['framerate'] || 20
 		$P.draw = args['draw'] || $P.draw
+		$P.setup = args['draw'] || $P.setup
 		$P.element = $('#canvas')
 		$P.element = $('#canvas')[0]
 		$P.canvas = $P.element.getContext('2d');
@@ -22,31 +24,64 @@ $P = {
 		$P.element.width = $P.width
 		$P.element.height = $P.width
 		// event binding: 
-		$('body').mouseup($P.on_mouseup)
-		$('body').mousedown($P.on_mousedown)
-		$('body').mousemove($P.on_mousemove)
-		window.addEventListener('touchend',$P.on_mouseup)
-		window.addEventListener('touchstart',$P.on_mousedown)
-		window.addEventListener('touchmove',$P.on_mousemove)
+		$('body').mouseup($P.on_mouseup_root)
+		$('body').mousedown($P.on_mousedown_root)
+		$('body').mousemove($P.on_mousemove_root)
+		// touch events mirror mouse events:
+		window.addEventListener('touchend',$P.on_mouseup_root)
+		window.addEventListener('touchstart',$P.on_mousedown_root)
+		window.addEventListener('touchmove',$P.on_mousemove_root)
 		setInterval($P.draw,1000/$P.framerate)
+		$P.setup()
 	},
-	on_mousedown: function(e) {
+
+	// things which occur upon settinng up the sketch
+	setup: function() {
+
+	},
+	// things that happen every frame
+	draw: function() {
+
+	},
+
+	// This does stuff so you don't have to.
+	on_mousedown_root: function(e) {
 		e.preventDefault()
 		$P.dragging = true
 		$P.getPointer(e)
+		setTimeout($P.longpress_check,$P.longpress_time)
+		$P.on_mousedown(e)
 	},
-	on_mouseup: function(e) {
+	// Overwrite this with your own code:
+	on_mousedown: function(e) {
+	},
+	on_mouseup_root: function(e) {
 		e.preventDefault()
 		$P.dragging = false
+		$P.on_mouseup(e)
 	},
-	on_mousemove: function(e) {
+	// Overwrite this with your own code:
+	on_mouseup: function(e) {
+	},
+	on_mousemove_root: function(e) {
+		$P.getPointer(e)
 		if ($P.dragging) {
 			$P.on_drag()
 		}
+		$P.on_mousemove(e)
 	},
-	// override this to do things on draw: 
+	// Overwrite this with your own code:
+	on_mousemove: function(e) {
+	},
+	// override this to do things on drag: 
 	on_drag: function() {
 
+	},
+	on_longpress: function() {
+		
+	},
+	longpress_check: function() {
+		if ($P.dragging) $P.on_longpress()
 	},
 
 	/**

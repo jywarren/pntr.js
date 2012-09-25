@@ -13,7 +13,11 @@ Put your code in index.html at the bottom, in the $P.draw() function, like:
 
     $P.initialize({
     	// pass in options here
+	setup: function() {
+		// code to run on start here
+	},
     	draw: function() {
+		// code to run every frame here
     		$C.fillStyle = "red"
     		$C.fillRect(0,0,100,100)
     	}

@@ -29,6 +29,11 @@ And more specifically for drawing: https://developer.mozilla.org/en-US/docs/Canv
 
 But where in their examples, you'd use: ctx.fillRect(0,0,10,10), you just say: $C.fillRect(0,0,10,10)
 
+###Examples###
+
+* Touch/click dragging: http://pntr.irateship.com/examples/dragging.html
+* Gravity: http://pntr.irateship.com/examples/gravity.html
+
 ###Troubleshooting###
 
 File issues here and I'll help answer questions: https://github.com/jywarren/pntr.js/issues
